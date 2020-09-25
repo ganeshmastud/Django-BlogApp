@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+    {% block title %}
+        Edit_Profile
+
+    {% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user.id == profile.user.id %}
+           <h1>Edit Your Profile Here....</h1><br>
+            <div class="form-group" >
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-secondary">Update</button>
+           </form>
+            </div>
+
+            {% else %}
+                <p>You don't have persmission to edit other's profile</p>
+            {% endif %}
+    {% else %}
+        To edit a profile you need to login first...
+    {% endif %}
+
+{% endblock %}
