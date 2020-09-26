@@ -1,14 +1,15 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.views.generic import DetailView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 # Create your views here.
 from blogapp.models import Profile
 from .forms import SignUpForm, EditProfileForm, PasswordChangingForm, Add_ProfileForm
 from django.urls import reverse_lazy
-
+from django.contrib import messages
 class AddProfilePageView(generic.CreateView):
     add_profile = Profile
     form_class = Add_ProfileForm
@@ -46,7 +47,21 @@ class UserRegisterView(generic.CreateView):
     form_class = SignUpForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
-
+# class UserLoginView():
+#     form_class=LoginForm
+#     template_name = 'registration/login.html'
+#     success_url = reverse_lazy('home')
+def UserLoginView(request):
+    if request.method=='POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            success_url = reverse_lazy('home')
+        else:
+            messages.info(request,'username or password is invalid.')
+            return redirect('home')
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm

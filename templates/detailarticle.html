@@ -95,7 +95,7 @@
         {% for comment in post.comments.all %}
             <strong>{{comment.name}}- {{ comment.date_added }}</strong>
             <br>
-            {{ comment.body }}
+            <h4>{{ comment.body }}</h4>
             <br>
         {% endfor %}
     {% endif %}

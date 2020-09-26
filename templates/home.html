@@ -11,23 +11,23 @@
     <ul>
         {% for post in object_list %}
             <div class="row">
-            <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="col">
-                     <a href="{% url 'article-detail'  post.pk%}">{{ post.title }}</a>-<a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>| {{ post.author }}-{{ post.post_date }}
+                <div class="shadow p-3 mb-5 bg-white rounded">
+                    <div class="col">
+                         <a href="{% url 'article-detail'  post.pk%}">{{ post.title }}</a>-<a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>| {{ post.author }}-{{ post.post_date }}
 
-                        {% if user.is_authenticated %}
-                             {% if user.id == post.author.id %}
-                                -<a href="{% url 'update_post' post.pk %}">(edit)</a><a href="{% url 'delete_post' post.pk %}">(Delete)</a>
-        {#                     {% else %}#}
-        {#                        You don't have access to perform edit or delete operation on these post.#}
-                             {% endif %}
-                        {% endif %}
-                        <br>
-                    {{ post.snippet }}
+                            {% if user.is_authenticated %}
+                                 {% if user.id == post.author.id %}
+                                    -<a href="{% url 'update_post' post.pk %}">(edit)</a><a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+            {#                     {% else %}#}
+            {#                        You don't have access to perform edit or delete operation on these post.#}
+                                 {% endif %}
+                            {% endif %}
+                            <br>
+                        {{ post.snippet }}
 
-        {#            {{ post.body | slice:":200"|safe }}</li>#}
+            {#            {{ post.body | slice:":200"|safe }}</li>#}
+                    </div>
                 </div>
-            </div>
             </div>
         {% endfor %}
 

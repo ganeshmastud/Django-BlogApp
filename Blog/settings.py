@@ -42,7 +42,18 @@ INSTALLED_APPS = [
     'blogapp',
     'members',
     'ckeditor',
+    'crispy_forms',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER= 'blogapp1999@gmail.com'
+EMAIL_HOST_PASSWORD='ganesh.GSM@321'
+EMAIL_USE_TLS=True
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
