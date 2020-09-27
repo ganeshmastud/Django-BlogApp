@@ -1,7 +1,7 @@
 from django import forms
 from .models import Post,Category,Comment
 from time import sleep
-import django.db.models  as db
+import django.db.utils  as db
 e=None
 for i in range(0,5):
     try:
