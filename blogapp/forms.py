@@ -11,7 +11,8 @@ for i in range(0,5):
             choice_list.append(item)
         e=None
     except Exception as e:
-        print(e)
+        pass
+    print(e)
     if e:
         sleep(5)
     else:
