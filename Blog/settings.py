@@ -29,7 +29,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['blogapp1999.herokuapp.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [
