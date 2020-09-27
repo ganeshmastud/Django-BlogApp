@@ -2,6 +2,7 @@ from django import forms
 from .models import Post,Category,Comment
 from time import sleep
 import django.core.exceptions as exc
+from django.db.utils import ProgrammingError
 for i in range(0,5):
     try:
         choices= Category.objects.all().values_list('name','name')
@@ -10,7 +11,7 @@ for i in range(0,5):
         for item in choices:
             choice_list.append(item)
         e=None
-    except exc as e:
+    except (ProgrammingError) as e:
         pass
     print(e)
     if e:
