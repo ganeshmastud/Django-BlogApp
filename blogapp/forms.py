@@ -1,6 +1,7 @@
 from django import forms
 from .models import Post,Category,Comment
 from time import sleep
+e=None
 for i in range(0,5):
     try:
         choices= Category.objects.all().values_list('name','name')
