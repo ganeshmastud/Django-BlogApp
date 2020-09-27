@@ -1,10 +1,20 @@
 from django import forms
 from .models import Post,Category,Comment
+from time import sleep
+for i in range(0,5):
+    try:
+        choices= Category.objects.all().values_list('name','name')
+        choice_list=[]
 
-choices= Category.objects.all().values_list('name','name')
-choice_list=[]
-for item in choices:
-    choice_list.append(item)
+        for item in choices:
+            choice_list.append(item)
+        e=None
+    except Exception as e:
+        pass
+    if e:
+        sleep(5)
+    else:
+        break
 class PostForm(forms.ModelForm):
     class Meta:
         model= Post
