@@ -12,12 +12,12 @@ for i in range(0,5):
             choice_list.append(item)
         e=None
     except (ProgrammingError) as e:
-        pass
-    print(e)
-    if e:
         sleep(5)
-    else:
-        break
+    # print(e)
+    # if e:
+    #
+    # else:
+    #     break
 class PostForm(forms.ModelForm):
     class Meta:
         model= Post
