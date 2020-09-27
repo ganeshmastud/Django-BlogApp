@@ -10,7 +10,7 @@ for i in range(0,5):
         for item in choices:
             choice_list.append(item)
         e=None
-    except exc.ObjectDoesNotExist as e:
+    except exc as e:
         pass
     print(e)
     if e:
