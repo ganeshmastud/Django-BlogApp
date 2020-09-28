@@ -3,16 +3,16 @@ from .models import Post,Category,Comment
 from time import sleep
 import django.core.exceptions as exc
 from django.db.utils import ProgrammingError
-for i in range(0,5):
-    try:
-        choices= Category.objects.all().values_list('name','name')
-        choice_list=[]
+# for i in range(0,5):
+#     try:
+choices= Category.objects.all().values_list('name','name')
+choice_list=[]
 
-        for item in choices:
-            choice_list.append(item)
-        e=None
-    except (ProgrammingError) as e:
-        sleep(5)
+for item in choices:
+    choice_list.append(item)
+    #     e=None
+    # except (ProgrammingError) as e:
+    #     sleep(5)
     # print(e)
     # if e:
     #
